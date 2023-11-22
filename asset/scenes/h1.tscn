@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdvrya2onijtg"]
 
 [ext_resource type="PackedScene" uid="uid://bld0mjo3mgxa7" path="res://asset/scenes/scene_map.tscn" id="1_l3s3q"]
-[ext_resource type="Texture2D" uid="uid://cg0e1q5um1e0s" path="res://asset/scenes/img/backgroundColorForest.png" id="2_gmq47"]
+[ext_resource type="Texture2D" uid="uid://cg0e1q5um1e0s" path="res://asset/scenes/img/backgrounds/backgroundColorForest.png" id="2_6f4fy"]
 [ext_resource type="Script" path="res://objects/teleporter.gd" id="3_nmkxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_el32o"]
 size = Vector2(1023.06, 577.341)
 
 [node name="background" instance=ExtResource("1_l3s3q")]
-texture = ExtResource("2_gmq47")
+texture = ExtResource("2_6f4fy")
 
 [node name="Teleporter" parent="." index="0"]
 visible = false
