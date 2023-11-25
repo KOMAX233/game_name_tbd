@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://8to5s3gq42fu"]
+
+[ext_resource type="Texture2D" uid="uid://b57i1ufk0d8pn" path="res://asset/scenes/img/tile/spritesheet_players.png" id="1_h57o0"]
+[ext_resource type="Texture2D" uid="uid://bw8ab4hd1ahni" path="res://asset/scenes/img/ui/generic-rpg-ui-inventario03.png" id="2_y08oi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkhtm"]
+size = Vector2(69, 150)
+
+[node name="npc" type="Area2D"]
+
+[node name="Sprite_human" type="Sprite2D" parent="."]
+texture = ExtResource("1_h57o0")
+region_enabled = true
+region_rect = Rect2(640, 0, 128, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 53)
+shape = SubResource("RectangleShape2D_tkhtm")
+
+[node name="talk_bubble" type="Sprite2D" parent="."]
+position = Vector2(39, -5)
+scale = Vector2(4.48, 4.48)
+texture = ExtResource("2_y08oi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="talk_bubble"]
