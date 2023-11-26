@@ -1,0 +1,8 @@
+res://asset/scenes/scene_map.tscn
+res://objects/player.tscn
+res://objects/npc.tscn
+res://asset/scenes/img/ui/dialogbox.tscn
+res://asset/scenes/img/ui/dialogbox.gd
+res://objects/npc.gd
+res://asset/scenes/world.tscn
+res://asset/scenes/h1.tscn

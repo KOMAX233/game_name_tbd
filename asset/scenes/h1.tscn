@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdvrya2onijtg"]
+[gd_scene load_steps=7 format=3 uid="uid://cdvrya2onijtg"]
 
 [ext_resource type="PackedScene" uid="uid://bld0mjo3mgxa7" path="res://asset/scenes/scene_map.tscn" id="1_l3s3q"]
-[ext_resource type="Texture2D" uid="uid://cg0e1q5um1e0s" path="res://asset/scenes/img/backgrounds/backgroundColorForest.png" id="2_6f4fy"]
+[ext_resource type="Texture2D" uid="uid://cg0e1q5um1e0s" path="res://asset/scenes/img/backgroundColorForest.png" id="2_6f4fy"]
 [ext_resource type="Script" path="res://objects/teleporter.gd" id="3_nmkxf"]
+[ext_resource type="PackedScene" uid="uid://d2mf7n8ib8i3h" path="res://objects/player.tscn" id="4_m07ok"]
+[ext_resource type="PackedScene" uid="uid://8to5s3gq42fu" path="res://objects/npc.tscn" id="5_p32ha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_el32o"]
 size = Vector2(1023.06, 577.341)
@@ -28,3 +30,10 @@ dest = "res://asset/scenes/scene_map.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter4" index="0"]
 position = Vector2(-245.532, 113.773)
 shape = SubResource("RectangleShape2D_el32o")
+
+[node name="npc" parent="." index="4" instance=ExtResource("5_p32ha")]
+position = Vector2(-70.6136, 201.753)
+
+[node name="player" parent="." index="5" instance=ExtResource("4_m07ok")]
+position = Vector2(-338.202, 187.949)
+scale = Vector2(1, 1)

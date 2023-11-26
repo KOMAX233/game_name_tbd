@@ -7,7 +7,7 @@ const AVATAR_MAP = {
 
 var dialogs = []
 var current = 0
-@export var interval = 0.1
+@export var interval = 0.05
 
 @onready var content: Label = $content
 @onready var avatar: TextureRect = $content/avatar
@@ -16,22 +16,17 @@ var tween : Tween
 
 func _ready() -> void:
 	hide_dialog_box()
-	show_dialog_box([
-		{avatar="yellow", text="bamba bamba?"},
-		{avatar="green", text="bambaaa!"},
-		{avatar="yellow", text="hard hard hard hard hard hard hard hard hard hard hard hard hard hard hard hard "},
-		{avatar="green", text="loud loud loud loud loud loud loud loud loud loud loud loud loud loud loud loud loud loud loud  loud loud loud loud loud "},
-		{avatar="yellow", text="school canteen school canteen school canteen school canteen school canteen school canteen school canteen school canteen school canteen school canteen school canteen school canteen school canteen school canteen school canteen school canteen school canteen school canteen "},
-		{avatar="green", text="bellybutton bellybutton bellybutton bellybutton bellybutton bellybutton   bye"},
-	])
 
 func _unhandled_input(event):
-	if event.is_action_pressed("click"):
-#		if (tween.get_loops_left() == 0):
-#			content.visible_ratio = 1
-#			nextindicator.show()
-#		el
-		if current + 1 < dialogs.size():
+	if content.visible and event.is_action_pressed("click"):
+		if (tween.is_running()):
+			print("not running", content.visible_ratio, content.visible_characters)
+			tween.kill()
+			content.visible_ratio = 1
+			content.visible_characters = -1
+			nextindicator.show()
+			print("not running", content.visible_ratio, content.visible_characters)
+		elif current + 1 < dialogs.size():
 			_show_dialog(current + 1)
 		else:
 			hide_dialog_box()
@@ -48,13 +43,19 @@ func show_dialog_box(_dialogs):
 func _show_dialog(index):
 	current = index
 	var dialog = dialogs[current]
-	content.text = dialog.text
+	content.text = "「" + dialog.avatar + "」\n" +dialog.text
 	avatar.texture = AVATAR_MAP[dialog.avatar]
 	nextindicator.hide()
 	tween = create_tween()
 	tween.tween_property(content, "visible_characters", content.text.length(), interval * content.text.length()).from(0)
-	print(tween.is_running())
+	print(tween.is_running(), " ", content.visible_characters, " ", content.visible_characters_behavior, " ", content.visible_ratio, content.visible)
 	tween.connect("finished", on_tween_finished)
 
 func on_tween_finished():
 	nextindicator.show()
+
+func _on_content_visibility_changed() -> void:
+	pass
+#	print(content.visible)
+#	print(get_tree().paused)
+#	get_tree().paused = content.visible
